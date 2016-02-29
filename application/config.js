@@ -10,10 +10,10 @@ On the other hand, giving it a value of 0 or any other value will make it unacce
 var ticketmonitoringsheet = "https://docs.google.com/spreadsheets/d/1wrfv8NY041PQlq84OT92psO0OC0yI1vOHatIplqZBH4/edit#gid=2073713539";
 var lockticketmonitoringsheet = 1;
 
-var incentivesmasterlist = "https://docs.google.com/spreadsheets/d/1EzZ2rn7rVH-49mtzDkurpqnl7l5DYBqVdlCGis_d90o/edit#gid=2545782";
+var incentivesmasterlist = "https://docs.google.com/spreadsheets/d/1wrfv8NY041PQlq84OT92psO0OC0yI1vOHatIplqZBH4/edit#gid=2073713539";
 var lockincentivesmasterlist = 1;
 
-var professorsincentiveslist = "https://docs.google.com/spreadsheets/d/1FckMvdB_uCUKbLuy0lnZWmnPbdRgqrrlfhIDjVT0kk0/edit#gid=0";
+var professorsincentiveslist = "https://docs.google.com/spreadsheets/d/1w6vEK4sd2AS5nsJCmpu0Cy7LESz4Y-IvhmIVMZP-kqQ/edit#gid=0";
 var lockprofessorsincentiveslist = 1;
 
 /*PDF LETTERS*/
