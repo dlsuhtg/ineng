@@ -39,25 +39,9 @@ function assignTableData(error){
 	$('#srtms > tbody').empty();
 }
 
-function checkStatus(error){
-	if(error != null && error == "Error: Request failed."){
-		sweetAlert("Oops...", "Something went wrong with the Google Spreadsheet." , "error");
-		console.log(error);
-		return false;  		
-	}
-	return true;
-}
-
-function loadingSearchButton(bool,source,text){
-	if(bool){
-		$('#' +source).html('<span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>');
-	}else{
-		$('#' +source).text(text);
-	}
-}
-
 function generatePanelsTicketSoldPerShow(showDates){
 	var ticketsSold = [];
+	showDates = removeBlankFromArray(showDates);
 	for(var x = 0; x < showDates.length; x++){
 		var count = 0;
 		for(var y = 0; y < studentList.length; y++){
@@ -96,6 +80,8 @@ function generatePanelsTicketSoldPerShow(showDates){
 
 function generateTicketSalesReport(boughtDates){
 	var ticketsSold = [];
+	boughtDates = removeBlankFromArray(boughtDates);
+	boughtDates.sort();
 	for(var x = 0; x < boughtDates.length; x++){
 		var count = 0;
 		var sales = 0;
@@ -105,6 +91,7 @@ function generateTicketSalesReport(boughtDates){
 				sales += parseInt(studentList[y].priceType);
 			}
 		}
+		sales = parseInt(sales) || 0;
 		ticketsSold.push([count,sales]);
 	}
 	$('#salestbl > tbody').empty();

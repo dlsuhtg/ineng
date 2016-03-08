@@ -95,15 +95,6 @@ function assignTableData(error){
 	makeTableSortable('tmstbl');
 }
 
-function checkStatus(error){
-	if(error != null && error == "Error: Request failed."){
-		sweetAlert("Oops...", "Something went wrong with the Google Spreadsheet." , "error");
-		console.log(error);
-		return false;  		
-	}
-	return true;
-}
-
 function checkDateFilter(date){
 	date = date.split("-");
 	date = new Date(date[2],date[0] - 1,date[1]);
@@ -175,16 +166,6 @@ function fillFilters(){
 	}
 	$('#bulknumberddl').find('option').remove().end().append('<option value="All">All</option>').val('All');
 	$('#bulknumberddl').append(option);$("#bulknumberddl").trigger("chosen:updated");option = '';
-}
-
-function loadingSearchButton(bool){
-	if(bool){
-		$('#searchButton').html('<span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>');
-		$('#searchButton').prop('disabled', true);
-	}else{
-		$('#searchButton').text('Search');
-		$('#searchButton').prop('disabled', false);
-	}
 }
 
 function isLocked(divID, exceptionDivID,showValue){
