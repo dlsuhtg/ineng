@@ -23,15 +23,27 @@ function assignTableData(error){
 		var td = $(this).find('td');
 		//make data dependent on the Date Bought column.
 		//include only those who have Date Bought.
-		if(td[2].innerHTML.length > 0){
-			var student = new Student(td[0].innerHTML,td[1].innerHTML,td[2].innerHTML.trim(),td[3].innerHTML,td[4].innerHTML,
-				td[5].innerHTML,td[6].innerHTML,td[7].innerHTML,td[8].innerHTML,td[9].innerHTML,td[10].innerHTML,
-				td[11].innerHTML,td[12].innerHTML,td[13].innerHTML);
+		if(td[2].innerHTML.trim().length > 0){
+			var student = new Student(
+				td[0].innerHTML.trim(),
+				td[1].innerHTML.trim(),
+				td[2].innerHTML.trim(),
+				td[3].innerHTML.trim(),
+				td[4].innerHTML.trim(),
+				td[5].innerHTML.trim(),
+				td[6].innerHTML.trim(),
+				td[7].innerHTML.trim(),
+				td[8].innerHTML.trim(),
+				td[9].innerHTML.trim(),
+				td[10].innerHTML.trim(),
+				td[11].innerHTML.trim(),
+				td[12].innerHTML.trim(),
+				td[13].innerHTML.trim());
 			studentList.push(student);
 			count++;
 			if($.inArray(td[2].innerHTML.trim(), boughtDates) == -1) boughtDates.push(td[2].innerHTML.trim());
 		}
-		if($.inArray(td[1].innerHTML, showDates) == -1) showDates.push(td[1].innerHTML);
+		if($.inArray(td[1].innerHTML, showDates) == -1) showDates.push(td[1].innerHTML.trim());
 	});
 	loadingSearchButton(false,"soldcount",count);
 	generatePanelsTicketSoldPerShow(showDates);
@@ -88,7 +100,7 @@ function generateTicketSalesReport(boughtDates){
 		for(var y = 0; y < studentList.length; y++){
 			if(studentList[y].dateBought == boughtDates[x]){
 				count++;
-				sales += parseInt(studentList[y].priceType);
+				sales += parseInt(studentList[y].priceType == ''?0:studentList[y].priceType);
 			}
 		}
 		sales = parseInt(sales) || 0;

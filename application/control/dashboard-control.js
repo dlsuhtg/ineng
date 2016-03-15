@@ -93,7 +93,7 @@ function getDailySailes(boughtDates){
 		for(var y = 0; y < studentList.length; y++){
 			if(studentList[y].dateBought == boughtDates[x]){
 				count++;
-				sales += parseInt(studentList[y].priceType);
+				sales += parseInt(studentList[y].priceType == ''?0:studentList[y].priceType);
 			}
 		}
 		sales = parseInt(sales) || 0;
