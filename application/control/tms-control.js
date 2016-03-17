@@ -19,7 +19,7 @@ function initSpreadSheet(){
 	var pricetypestr = ($('#pricetypeddl').val() == "All"?"":" AND E = " +$('#pricetypeddl').val() +"");
 	var bulkstr = ($('#bulknumberddl').val() == "All"?"":" AND L = '" + $('#bulknumberddl').val() + "'");
 	var querystr = "SELECT * WHERE 1=1 " +showstr +showdatestr +soldbystr +tickettypestr +pricetypestr +bulkstr;
-	loadingSearchButton(true);
+	loadingSearchButton(true,'searchButton','Search');
 	$('#srtms').empty();
 	$('#srtms').sheetrock({
 	  url: ticketmonitoringsheet,
@@ -30,7 +30,7 @@ function initSpreadSheet(){
 		  	assignTableData();
 		  	fillFilters();	
 	  	}
-	  	loadingSearchButton(false);
+	  	loadingSearchButton(false,'searchButton','Search');
 	  }
 	});
 }
@@ -176,14 +176,4 @@ function isLocked(divID, exceptionDivID,showValue){
 		return true;
 	}
 	return false;
-}
-
-
-//DEV FUNCTIONS
-function getProperties(prop){
-	var arr = [];
-	for(var name in prop){
-		arr.push(name);
-	}
-	console.log(arr);
 }

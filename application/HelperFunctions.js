@@ -56,8 +56,10 @@ function checkStatus(error){
 function loadingSearchButton(bool,source,text){
     if(bool){
         $('#' +source).html('<span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>');
+        $('#' +source).prop('disabled', true);
     }else{
         $('#' +source).text(text);
+        $('#' +source).prop('disabled', false);
     }
 }
 

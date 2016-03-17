@@ -3,7 +3,7 @@ function initSpreadSheetP(){
 	var departmentstr = ($('#departmentddlprof').val() == "All"?"":" AND B = '" +$('#departmentddlprof').val() +"'");
 	var namestr = ($('#nameddlprof').val() == "All"?"":" AND A = '" + $('#nameddlprof').val() + "'");
 	var querystr = "SELECT * WHERE 1=1 " +showstr +departmentstr /*+subjectstr +sectionstr*/ +namestr;
-	loadingSearchButton(true,"searchButton2");
+	loadingSearchButton(true,"searchButton2","Search");
 	$('#srp').empty();
 	$('#srp').sheetrock({
 	  url: professorsincentiveslist,
@@ -14,7 +14,7 @@ function initSpreadSheetP(){
 		  	assignTableDataP();
 		  	fillFiltersP();	
 	  	}
-	  	loadingSearchButton(false,"searchButton2");
+	  	loadingSearchButton(false,"searchButton2","Search");
 	  }
 	});
 }
@@ -26,7 +26,7 @@ function initSpreadSheetSI(){
 	var searchstr = ($('#searchddl').val() == "All"?"":" AND F = '" + $('#searchddl').val().split(" - ")[0] + "'");
 	var attendedstr = ($('#attendedCheck').is(':checked')?" AND M = 'YES'":" AND M = 'NO'");
 	var querystr = "SELECT * WHERE 1=1 " +showstr +showdatestr +professorstr /*+subjectstr +sectionstr*/ +searchstr +attendedstr;
-	loadingSearchButton(true,"searchButton");
+	loadingSearchButton(true,"searchButton","Search");
 	$('#srsi').empty();
 	$('#srsi').sheetrock({
 	  url: incentivesmasterlist,
@@ -37,7 +37,7 @@ function initSpreadSheetSI(){
 		  	assignTableDataSI();
 		  	fillFiltersSI();	
 	  	}
-	  	loadingSearchButton(false,"searchButton");
+	  	loadingSearchButton(false,"searchButton","Search");
 	  }
 	});
 }
@@ -128,7 +128,15 @@ function assignTableDataP(){
 		var incentives = [];
 		var flag = false;
 		for(var x=0;x < incentivearr.length; x++){
-			var i = new Incentive(show,incentivearr[x].split("-")[0].trim(),incentivearr[x].split("-")[1].trim(),incentivearr[x].split("-")[2].trim());
+			var name = typeof incentivearr[x].split("-")[0] === 'undefined'?'':incentivearr[x].split("-")[0].trim();
+			var department = typeof incentivearr[x].split("-")[1] === 'undefined'?'':incentivearr[x].split("-")[1].trim();
+			var inc = typeof incentivearr[x].split("-")[2] === 'undefined'?'':incentivearr[x].split("-")[2].trim();
+			var i = new Incentive(
+				show,
+				name,
+				department,
+				inc
+				);
 			incentives.push(i);
 		}
 		var subject = $('#subjectddlprof').val();
