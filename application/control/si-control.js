@@ -335,6 +335,8 @@ function generatePDF(type){
     	yaxis += long_line_space;
 	    doc.text(starting_xaxis, yaxis,"Professor: " + prof.name);
 	    yaxis += short_line_space;
+	    doc.text(starting_xaxis, yaxis,"Department: " + prof.department);
+	    yaxis += short_line_space;
 	    doc.text(starting_xaxis, yaxis,"Re: Attendance List for Incentives");
 	    yaxis += short_line_space;
 	    doc.text(starting_xaxis, yaxis,"Event: " +prof.show);
